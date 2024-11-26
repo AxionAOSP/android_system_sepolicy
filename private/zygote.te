@@ -219,7 +219,9 @@ get_prop(zygote, device_config_window_manager_native_boot_prop)
 # fsetid can be checked as a consequence of chmod when using cgroup v2 uid/pid hierarchy. This is
 # done to determine if the file should inherit setgid. In this case, setgid on the file is
 # undesirable, so suppress the denial.
-dontaudit zygote self:global_capability_class_set { sys_resource fsetid };
+dontaudit zygote self:global_capability_class_set { fsetid };
+
+allow zygote self:global_capability_class_set sys_resource;
 
 # Ignore spurious denials calling access() on fuse.
 # Also ignore read and open as sdcardfs may read and open dir when app tries to access a dir that
