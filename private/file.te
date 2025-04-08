@@ -263,3 +263,8 @@ type exp_partition_data_file, file_type, data_file_type, core_data_file_type;
 
 # statsd service stores list of atoms in use
 type statsd_atoms_list_file, file_type, data_file_type, core_data_file_type;
+
+# File type used for memfds created by libcutils. This type has similar access
+# control rules as the other ashmem types to smooth over the transition from
+# ashmem to memfd.
+type ashmem_compat_memfd, file_type, mlstrustedobject;
