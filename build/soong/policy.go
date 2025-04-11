@@ -367,6 +367,7 @@ func (c *policyCil) compileConfToCil(ctx android.ModuleContext, conf android.Pat
 	checkpolicyCmd := rule.Command().BuiltTool("checkpolicy").
 		Flag("-C"). // Write CIL
 		Flag("-M"). // Enable MLS
+		Flag("-L"). // Line markers for allow rules
 		FlagWithArg("-c ", strconv.Itoa(PolicyVers)).
 		FlagWithOutput("-o ", cil).
 		Input(conf)
