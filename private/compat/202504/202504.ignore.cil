@@ -9,4 +9,5 @@
     pbtombstone_exec
     prefetch
     usb_disable_when_locked_prop
+    virtualizationservice_data_file
   ))
