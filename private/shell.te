@@ -638,3 +638,9 @@ neverallow {
   userdebug_or_eng(`-virtualizationmanager')
   userdebug_or_eng(`-crosvm')
 } shell_data_file:dir search;
+
+# Restrict execute from /data/local/tmp directories. This directory contains
+# untrusted content from the adb shell user, and only the shell user should
+# be able to execute such content. Allowing other domains to execute this
+# content would be a privilege escalation vulnerability.
+neverallow { domain -shell } shell_data_file:file no_x_file_perms;
