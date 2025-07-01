@@ -1112,4 +1112,33 @@ define(`vulkan_sphal_use', `
 typeattribute $1 vulkan_sphal_domain;
 ')
 
+# set_xperm_filter(gpu_target, allowedTarget, unpriv_ioctls, restricted_ioctls, instrumentation_ioctls)
+# Allow targets to harden their IOCTL interfaces by specifying
+# unprivileged, blocked, and instrumentation-specific IOCTLs for appdomain.
+#
+# Parameters:
+#   gpu_target: The target device to apply the filter to.
+#   allowedTarget: Additional `appdomain` target to exempt from hardened policy.
+#     Allows for an allowlist of services, or gating by a target SDK.
+#   unpriv_ioctls: IOCTLs to allow across appdomain.
+#   restricted_ioctls: IOCTLs to deny across appdomain.
+#   instrumentation_ioctls: IOCTLs intended to be used in development.
+#     IOCTLs will be allowed from `shell` or `debuggable` applications.
+define(`set_xperm_filter', `
+  # Allow unprivileged IOCTLs.
+  allowxperm appdomain $1:chr_file ioctl { $3 };
+  # Disallow restricted IOCTLs. Gate by targetSdkVersion.
+  neverallowxperm { appdomain -$2 } $1:chr_file ioctl { $4 };
+  allowxperm $2 $1:chr_file ioctl { $4 };
+  # Allow instrumentation ioctls when used from shell by
+  # profiling tools, or debuggable applications.
+  # Gate by targetSdkVersion.
+  allowxperm { $2 runas_app shell } $1:chr_file ioctl { $5 };
+  neverallowxperm {
+    appdomain
+    -$2
+    -runas_app
+    -shell
+  } $1:chr_file ioctl { $5 };
+')
 divert(0)
