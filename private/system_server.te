@@ -1525,11 +1525,6 @@ allow system_server apex_data_file:file r_file_perms;
 allow system_server vendor_apex_file:dir { getattr search };
 allow system_server vendor_apex_file:file r_file_perms;
 
-# Allow the system server to read apex files under /system/apex and
-# /system_ext/apex.
-allow system_server system_apex_file:dir { getattr search };
-allow system_server system_apex_file:file r_file_perms;
-
 # Allow the system server to manage relevant apex module data files.
 allow system_server apex_module_data_file:dir { getattr search };
 # These are modules where the code runs in system_server, so we need full access.
