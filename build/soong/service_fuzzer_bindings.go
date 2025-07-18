@@ -374,6 +374,7 @@ var (
 		"mmd":                                    EXCEPTION_NO_FUZZER,
 		"mount":                                  EXCEPTION_NO_FUZZER,
 		"music_recognition":                      EXCEPTION_NO_FUZZER,
+		"native_serial":                          []string{"serialservice_fuzzer"},
 		"nearby":                                 EXCEPTION_NO_FUZZER,
 		"netd":                                   []string{"netd_native_service_fuzzer"},
 		"netpolicy":                              EXCEPTION_NO_FUZZER,
