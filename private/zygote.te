@@ -188,9 +188,6 @@ r_dir_file(zygote, rootfs)
 # System file accesses.
 r_dir_file(zygote, system_file)
 
-# APEX files under /system/apex and /system_ext/apex.
-r_dir_file(zygote, system_apex_file)
-
 # /oem accesses.
 allow zygote oemfs:dir search;
 
