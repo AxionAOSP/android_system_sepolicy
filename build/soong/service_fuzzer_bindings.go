@@ -200,7 +200,7 @@ var (
 		"android.hardware.security.keymint.IRemotelyProvisionedComponent/avf": EXCEPTION_NO_FUZZER,
 		"android.system.virtualizationservice":                                []string{"virtualizationmanager_fuzzer"},
 		"android.os.IAccessor/ICommService/security_vm_keymint":               EXCEPTION_NO_FUZZER,
-		"android.keymint.trusty.commservice.ICommService/default":             EXCEPTION_NO_FUZZER,
+		"android.trusty.commservice.ICommService/security_vm_keymint":         EXCEPTION_NO_FUZZER,
 		"android.system.virtualizationservice_internal.IVfioHandler":          EXCEPTION_NO_FUZZER,
 		"android.system.virtualizationservice_internal.IVmnic":                EXCEPTION_NO_FUZZER,
 		"android.system.virtualizationmaintenance":                            EXCEPTION_NO_FUZZER,
