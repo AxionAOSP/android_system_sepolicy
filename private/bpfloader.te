@@ -10,6 +10,9 @@ allow bpfloader kmsg_device:chr_file w_file_perms;
 allow bpfloader sysfs_btf:dir search;
 allow bpfloader sysfs_btf:file { getattr read open };
 
+# allow bpfloader to access global symbols from kallsyms
+allow bpfloader proc_kallsyms:file r_file_perms;
+
 # These permissions are required to pin ebpf maps & programs.
 allow bpfloader bpffs_type:dir { add_name create open read remove_name search setattr write };
 allow bpfloader bpffs_type:file { create getattr read rename setattr };
