@@ -42,6 +42,7 @@ neverallow {
     # generic access to sysfs_type
     -apexd
     -ueventd
+    -system_server
     -vold
 } sysfs_leds:file *;
 ')
