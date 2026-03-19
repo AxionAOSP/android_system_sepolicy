@@ -19,6 +19,7 @@
     automotive_display_service
     automotive_display_service_exec
     ashmem_libcutils_device
+    ax_diagnostics
     blob_store_service
     binder_cache_bluetooth_server_prop
     binder_cache_system_server_prop

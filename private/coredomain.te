@@ -144,6 +144,7 @@ full_treble_only(`
   # /proc
   neverallow {
     coredomain
+    -ax_diagnostics
     -init
     -vold
   } proc:file no_rw_file_perms;
@@ -152,6 +153,7 @@ full_treble_only(`
   neverallow {
     coredomain
     -apexd
+    -ax_diagnostics
     -init
     -ueventd
     is_flag_enabled(RELEASE_AVF_ENABLE_DEVICE_ASSIGNMENT, `-vfio_handler')

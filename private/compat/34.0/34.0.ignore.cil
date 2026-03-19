@@ -7,6 +7,7 @@
   ( new_objects
     archive_service
     artd_pre_reboot_service
+    ax_diagnostics
     contextual_search_service
     dexopt_chroot_setup_service
     dtbo_block_device

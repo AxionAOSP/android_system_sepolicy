@@ -6,6 +6,7 @@
 (typeattributeset new_objects
   ( new_objects
     app_function_service
+    ax_diagnostics
     binderfs_logs_transaction_history
     binderfs_logs_transactions
     bluetooth_finder_prop

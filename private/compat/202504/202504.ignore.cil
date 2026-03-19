@@ -6,6 +6,7 @@
 (typeattributeset new_objects
   ( new_objects
     activity_structured_service
+    ax_diagnostics
     gatekeeper_vendor_data_file
     hal_bluetooth_lpp_service
     hal_frp_service

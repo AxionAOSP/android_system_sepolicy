@@ -10,6 +10,7 @@
     art_boot
     art_boot_exec
     artd
+    ax_diagnostics
     bt_device
     build_attestation_prop
     composd_vm_art_prop

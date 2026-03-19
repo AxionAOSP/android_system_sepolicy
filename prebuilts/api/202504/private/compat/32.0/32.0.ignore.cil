@@ -10,6 +10,7 @@
     apexd_select_prop
     artd_service
     attestation_verification_service
+    ax_diagnostics
     bluetooth_config_prop
     binderfs_features
     bpfloader
