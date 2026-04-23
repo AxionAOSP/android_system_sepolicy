@@ -2200,6 +2200,7 @@ full_treble_only(`
     -vendor_uuid_mapping_config_file
     -vndk_sp_file
     -vendor_aconfig_storage_file
+    -axion_perf_config_file
   }:file *;
 ')
 

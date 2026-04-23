@@ -246,6 +246,8 @@ type vendor_file, vendor_file_type, file_type;
 type vendor_app_file, vendor_file_type, file_type;
 # Default type for everything under /vendor/etc/
 type vendor_configs_file, vendor_file_type, file_type;
+# Ax perf config /vendor/etc/ax_perf_config.xml
+type axion_perf_config_file, vendor_file_type, file_type;
 # Default type for all *same process* HALs and their lib/bin dependencies.
 # e.g. libEGL_xxx.so, android.hardware.graphics.mapper@2.0-impl.so
 type same_process_hal_file, vendor_file_type, file_type;

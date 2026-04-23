@@ -1545,6 +1545,9 @@ allow system_server system_server_startup:unix_dgram_socket write;
 allow system_server apex_service:service_manager find;
 allow system_server apexd:binder call;
 
+# AxBurstEngine perf config
+allow system_server axion_perf_config_file:file r_file_perms;
+
 # Allow system server to scan /apex for flattened APEXes
 allow system_server apex_mnt_dir:dir r_dir_perms;
 
