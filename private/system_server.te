@@ -386,6 +386,8 @@ not_recovery(`hal_client_domain(system_server, hal_bootctl)')
 
 # Talk with graphics composer fences
 allow system_server hal_graphics_composer:fd use;
+allow system_server hal_graphics_composer:process { getsched setsched };
+allow system_server surfaceflinger:process { getsched setsched };
 
 # Use RenderScript always-passthrough HAL
 allow system_server hal_renderscript_hwservice:hwservice_manager find;
@@ -1043,6 +1045,16 @@ allow system_server pstorefs:file r_file_perms;
 # /sys access
 allow system_server sysfs_zram:dir search;
 allow system_server sysfs_zram:file rw_file_perms;
+allow system_server sysfs_devices_system_cpu:dir r_dir_perms;
+allow system_server sysfs_devices_system_cpu:file rw_file_perms;
+allow system_server sysfs_devices_system_cpu:lnk_file r_file_perms;
+allow system_server sysfs_devfreq_dir:dir r_dir_perms;
+allow system_server sysfs_devfreq_dir:file rw_file_perms;
+allow system_server sysfs_devfreq_dir:lnk_file r_file_perms;
+allow system_server sysfs_devfreq_cur:file rw_file_perms;
+allow system_server sysfs_gpu:dir r_dir_perms;
+allow system_server sysfs_gpu:file rw_file_perms;
+allow system_server sysfs_gpu:lnk_file r_file_perms;
 
 # Read /sys/fs/selinux/policy
 allow system_server kernel:security read_policy;

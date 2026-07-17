@@ -155,6 +155,7 @@ full_treble_only(`
     -apexd
     -ax_diagnostics
     -init
+    -system_server
     -ueventd
     is_flag_enabled(RELEASE_AVF_ENABLE_DEVICE_ASSIGNMENT, `-vfio_handler')
     -vold
