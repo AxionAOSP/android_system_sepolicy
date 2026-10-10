@@ -327,6 +327,14 @@ func (m *selinuxContextsModule) buildGeneralContexts(ctx android.ModuleContext, 
 		builtContext = sorted_output
 	}
 
+	rule.Temporary(builtContext)
+	sanitized_context := pathForModuleOut(ctx, ctx.ModuleName()+"_sanitized")
+	rule.Command().
+		Text("sed -E ':a; s/(u:object_r:[^:]*)lineage/\\1vendor/I; ta'").
+		Input(builtContext).
+		FlagWithOutput("> ", sanitized_context)
+	builtContext = sanitized_context
+
 	rule.DeleteTemporaryFiles()
 	rule.Build("selinux_contexts", "building contexts: "+m.Name())
 

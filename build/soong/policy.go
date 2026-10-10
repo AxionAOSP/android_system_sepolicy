@@ -379,13 +379,14 @@ func (c *policyCil) stem() string {
 
 func (c *policyCil) compileConfToCil(ctx android.ModuleContext, conf android.Path) android.OutputPath {
 	cil := pathForModuleOut(ctx, c.stem())
+	rawCil := pathForModuleOut(ctx, "raw_"+c.stem())
 	rule := android.NewRuleBuilder(pctx, ctx)
 	checkpolicyCmd := rule.Command().BuiltTool("checkpolicy").
 		Flag("-C"). // Write CIL
 		Flag("-M"). // Enable MLS
 		Flag("-L"). // Line markers for allow rules
 		FlagWithArg("-c ", strconv.Itoa(PolicyVers)).
-		FlagWithOutput("-o ", cil).
+		FlagWithOutput("-o ", rawCil).
 		Input(conf)
 
 	if proptools.Bool(c.properties.Decompile_binary) {
@@ -397,14 +398,19 @@ func (c *policyCil) compileConfToCil(ctx android.ModuleContext, conf android.Pat
 			Text("filter_out").
 			Flag("-f").
 			Inputs(android.PathsForModuleSrc(ctx, c.properties.Filter_out)).
-			FlagWithOutput("-t ", cil)
+			FlagWithOutput("-t ", rawCil)
 	}
 
 	if len(c.properties.Additional_cil_files) > 0 {
 		rule.Command().Text("cat").
 			Inputs(android.PathsForModuleSrc(ctx, c.properties.Additional_cil_files)).
-			Text(">> ").Output(cil)
+			Text(">> ").Output(rawCil)
 	}
+
+	rule.Command().
+		Text("sed -E 's/lineage/vendor/g; s/Lineage/Vendor/g'").
+		Input(rawCil).
+		FlagWithOutput("> ", cil)
 
 	if proptools.BoolDefault(c.properties.Secilc_check, true) {
 		secilcCmd := rule.Command().BuiltTool("secilc").
