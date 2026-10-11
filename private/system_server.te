@@ -194,7 +194,7 @@ allow system_server self:netlink_xfrm_socket { nlmsg_read nlmsg_write };
 allow system_server self:netlink_xfrm_socket nlmsg;
 
 # Kill apps.
-allow system_server appdomain:process { getpgid sigkill signal };
+allow system_server appdomain:process { getattr getpgid sigkill signal };
 # signull allowed for kill(pid, 0) existence test.
 allow system_server appdomain:process { signull };
 
